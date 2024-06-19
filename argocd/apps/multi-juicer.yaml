@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: multi-juicer
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: 'https://github.com/juice-shop/multi-juicer.git'
+    path: helm/multi-juicer
+    helm:
+      parameters:
+        - name: replicaCount
+          value: '1'
+        - name: service.type
+          value: LoadBalancer
+        - name: balancer.service.type
+          value: LoadBalancer
+  syncPolicy:
+    automated: {}
