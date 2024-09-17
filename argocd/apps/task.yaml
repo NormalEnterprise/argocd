@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: apps/task
-    repoURL: https://github.com/njannasch/argocd.git
+    repoURL: https://github.com/NormalEnterprise/argocd.git
     targetRevision: HEAD
   syncPolicy:
     automated:
